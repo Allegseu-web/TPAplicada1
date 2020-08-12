@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <StartWorkingDirectory>$(MSBuildProjectDirectory)</StartWorkingDirectory>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="UI\Consultas\icons8-search-more-100.png" />
+    <None Remove="UI\Registros\icons8-crear-nuevo-100.png" />
+    <None Remove="UI\Registros\icons8-eliminar-100.png" />
+    <None Remove="UI\Registros\icons8-guardar-100.png" />
+    <None Remove="UI\Registros\icons8-search-more-100.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqLite" Version="3.1.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DATA\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="UI\Consultas\icons8-search-more-100.png" />
+    <Resource Include="UI\Registros\icons8-crear-nuevo-100.png" />
+    <Resource Include="UI\Registros\icons8-eliminar-100.png" />
+    <Resource Include="UI\Registros\icons8-guardar-100.png" />
+    <Resource Include="UI\Registros\icons8-search-more-100.png" />
+  </ItemGroup>
+
+</Project>

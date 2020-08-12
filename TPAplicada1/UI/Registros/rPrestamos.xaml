@@ -1,0 +1,76 @@
+﻿<Window x:Class="TPAplicada1.UI.Registros.rPrestamos"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TPAplicada1.UI.Registros"
+        mc:Ignorable="d"
+        Title="rPrestamos" Height="500" Width="700">
+    <Grid>
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,15">
+                <Label Content="PrestamoId" Margin="0,0,10,0" Width="75"></Label>
+                <TextBox x:Name="PrestamoTextBox" Text="{Binding PrestamoId}" Width="150" Margin="0,0,10,0"></TextBox>
+                <Button x:Name="BuscarButton" Width="75" Click="BuscarButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/UI/Registros/icons8-search-more-100.png" Width="30" Height="25"></Image>
+                        <Label Content="Buscar"></Label>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,15">
+                <Label Content="Fecha de Nacimiento" Margin="0,0,10,0"></Label>
+                <DatePicker x:Name="FechaNacimientoDatePicker" Width="150" Margin="0,0,25,0" SelectedDate="{Binding Fecha}"></DatePicker>
+                <Label Content="Observacion" Margin="0,0,5,0"></Label>
+                <TextBox x:Name="ObsevacionTextBox" Width="250" Text="{Binding Observacion}"></TextBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,15">
+                <Label Content="Juego" Margin="0,0,10,0"></Label>
+                <ComboBox x:Name="JuegoIdComboBox" Width="100" Margin="0,0,5,0" SelectedIndex="{Binding JuegoId}"></ComboBox>
+                <Label Content="Amigo" Margin="0,0,5,0"></Label>
+                <ComboBox x:Name="AmigoComboBox" Width="100" Margin="0,0,5,0" SelectedIndex="{Binding JuegoId}"></ComboBox>
+                <Label Content="Cantidad de juegos" Margin="0,0,5,0"></Label>
+                <TextBox x:Name="CantidadJuegosTextBox" Width="207" Text="{Binding CantidadJuegos}"></TextBox>
+            </StackPanel>
+            <Button x:Name="AñadirButton" Width="75" Height="32" Content="Añadir Fila" HorizontalAlignment="Right" Click="AñadirButton_Click"></Button>
+            <DataGrid Height="200" x:Name="Detalles" ItemsSource="{Binding Detalles}" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="PrestamoId" Binding="{Binding PrestamoId}" Visibility="Hidden"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Amigo" Binding="{Binding Amigo_Nombre}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="JuegoId" Binding="{Binding JuegoId}" Visibility="Hidden"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Nombre del Juego" Binding="{Binding Juego_Nombre}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Cantidad de juegos" Binding="{Binding Cantidad}"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button x:Name="BorrarButton" Width="75" Height="32" Content="Borrar Fila" HorizontalAlignment="Right" Click="BorrarButton_Click"></Button>
+
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,15">
+                <Button x:Name="NuevoButton" Width="100" Height="32" Margin="10,0,25,0" Click="NuevoButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/UI/Registros/icons8-crear-nuevo-100.png">
+                        </Image>
+                        <Label Content="Nuevo"></Label>
+                    </StackPanel>
+                </Button>
+
+                <Button x:Name="GuardarButton" Width="100" Height="32" Margin="10,0,10,0" Click="GuardarButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/UI/Registros/icons8-guardar-100.png">
+                        </Image>
+                        <Label Content="Guardar"></Label>
+                    </StackPanel>
+                </Button>
+
+                <Button x:Name="EliminarButton" Width="100" Height="32" Margin="25,0,10,0" Click="EliminarButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/UI/Registros/icons8-eliminar-100.png">
+                        </Image>
+                        <Label Content="Eliminar"></Label>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
