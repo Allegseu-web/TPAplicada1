@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TPAplicada1.UI.Registros"
         mc:Ignorable="d"
-        Title="rPrestamos" Height="500" Width="700">
+        Title="Registro de Prestamos" Height="500" Width="700">
     <Grid>
         <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
             <StackPanel Orientation="Horizontal" Margin="0,10,0,15">
@@ -35,7 +35,7 @@
                 <TextBox x:Name="CantidadJuegosTextBox" Width="207" Text="{Binding CantidadJuegos}"></TextBox>
             </StackPanel>
             <Button x:Name="AñadirButton" Width="75" Height="32" Content="Añadir Fila" HorizontalAlignment="Right" Click="AñadirButton_Click"></Button>
-            <DataGrid Height="200" x:Name="Detalles" ItemsSource="{Binding Detalles}" AutoGenerateColumns="False">
+            <DataGrid Height="200" x:Name="Detalles" ItemsSource="{Binding Detalles}" AutoGenerateColumns="False" IsReadOnly="True">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="PrestamoId" Binding="{Binding PrestamoId}" Visibility="Hidden"></DataGridTextColumn>
                     <DataGridTextColumn Header="Amigo" Binding="{Binding Amigo_Nombre}"></DataGridTextColumn>

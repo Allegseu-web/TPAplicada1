@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TPAplicada1.UI.Consultas"
         mc:Ignorable="d"
-        Title="cAmigos" Height="450" Width="800">
+        Title="Consulta de Amigos" Height="450" Width="800">
     <Grid>
         <StackPanel Orientation="Vertical">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50,25,0,0">
@@ -22,7 +22,7 @@
             </StackPanel>
 
             <StackPanel Orientation="Vertical" Margin="50,20,50,0">
-                <DataGrid x:Name="Datos" Height="300" AutoGenerateColumns="False">
+                <DataGrid x:Name="Datos" Height="300" AutoGenerateColumns="False" IsReadOnly="True">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="AmigoId" Binding="{Binding AmigoId}"></DataGridTextColumn>
                         <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}"></DataGridTextColumn>

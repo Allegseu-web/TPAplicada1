@@ -115,13 +115,20 @@ namespace TPAplicada1.UI.Registros
             {
                 var remover = JuegosBLL.Buscar(JuegoIdComboBox.SelectedIndex + 1);
                 remover.Existencias -= int.Parse(CantidadJuegosTextBox.Text);
-                JuegosBLL.Guardar(remover);
-                Prestamo.Detalles.Add(new PrestamosDetalle(Prestamo.PrestamoId, JuegoIdComboBox.SelectedIndex + 1, int.Parse(CantidadJuegosTextBox.Text), AmigoComboBox.Text, JuegoIdComboBox.Text));
+                if(remover.Existencias >= 0)
+                {
+                    JuegosBLL.Guardar(remover);
+                    Prestamo.Detalles.Add(new PrestamosDetalle(Prestamo.PrestamoId, JuegoIdComboBox.SelectedIndex + 1, int.Parse(CantidadJuegosTextBox.Text), AmigoComboBox.Text, JuegoIdComboBox.Text));
 
-                Cargar();
-                CantidadJuegosTextBox.Text = "0";
-                JuegoIdComboBox.Text = string.Empty;
-                AmigoComboBox.Text = string.Empty;
+                    Cargar();
+                    CantidadJuegosTextBox.Text = "0";
+                    JuegoIdComboBox.Text = string.Empty;
+                    AmigoComboBox.Text = string.Empty;
+                }
+                else
+                {
+                    MessageBox.Show("Se ha agotado las existencias del juego: " + remover.Descripcion, "Sin existencias", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
         }
 
