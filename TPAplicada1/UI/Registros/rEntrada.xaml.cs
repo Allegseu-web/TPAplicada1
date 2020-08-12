@@ -18,7 +18,7 @@ namespace TPAplicada1.UI.Registros
     /// Interaction logic for rEntrada.xaml
     /// </summary>
     public partial class rEntrada : Window
-    {
+    {/*Bonito*/
         Entradas Entrada = new Entradas();
         public rEntrada()
         {
