@@ -52,7 +52,15 @@ namespace TPAplicada1.UI.Registros
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
             if (!Validar()) { return; }
-            var ingreso = JuegosBLL.Buscar(JuegoIdComboBox.SelectedIndex+1);
+
+            var ingreso = JuegosBLL.Buscar(JuegoIdComboBox.SelectedIndex + 1);
+
+            if (int.Parse(CantidadTextBox.Text) < 0)
+            {
+                CantidadTextBox.Text = "1";
+                MessageBox.Show("La cantidad minima es 1", "Error de cantidad", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
             ingreso.Existencias += int.Parse(CantidadTextBox.Text);
             JuegosBLL.Guardar(ingreso);
             var proceso = EntradasBLL.Guardar(Entrada);

@@ -53,7 +53,7 @@ namespace TPAplicada1.UI.Registros
         {
             Contexto context = new Contexto();
             if (!Validar()) { return; }
-            if(context.amigos.Any(p => p.Nombre == NombreTextBox.Text))
+            if(context.amigos.Any(p => p.Nombre == NombreTextBox.Text) || context.amigos.Any(p => p.Celular == CelularTextBox.Text))
             {
                 MessageBox.Show("Este Amigo ya existe.", "Persona existente", MessageBoxButton.OK, MessageBoxImage.Information);
                 MessageBox.Show("Si profesor pense en eso, pruebe con mas cosas.");
