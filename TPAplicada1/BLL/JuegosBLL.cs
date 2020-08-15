@@ -103,6 +103,50 @@ namespace TPAplicada1.BLL
             return esOk;
         }
 
+        public static bool Entrada(Juegos Juego, int cantidad)
+        {
+            Contexto datos = new Contexto();
+            bool esOk = false;
+
+            try
+            {
+                Juego.Existencias += cantidad;
+                datos.Entry(Juego).State = EntityState.Modified;
+                esOk = datos.SaveChanges() > 0;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                datos.Dispose();
+            }
+            return esOk;
+        }
+
+        public static bool Salida(Juegos Juego, int cantidad)
+        {
+            Contexto datos = new Contexto();
+            bool esOk = false;
+
+            try
+            {
+                Juego.Existencias -= cantidad;
+                datos.Entry(Juego).State = EntityState.Modified;
+                esOk = datos.SaveChanges() > 0;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                datos.Dispose();
+            }
+            return esOk;
+        }
+
         public static Juegos Buscar(int Id)
         {
             Contexto datos = new Contexto();

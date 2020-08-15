@@ -62,7 +62,7 @@ namespace TPAplicada1.UI.Registros
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
             if (!Validar()) { return; }
-            Prestamo.AmigoId += 1;
+
             var proceso = PrestamosBLL.Guardar(Prestamo);
 
             if (proceso == true)
@@ -111,10 +111,16 @@ namespace TPAplicada1.UI.Registros
 
         private void AñadirButton_Click(object sender, RoutedEventArgs e)
         {
-            if(AmigoComboBox.Text.Length != 0 && CantidadJuegosTextBox.Text.Length != 0 && ObsevacionTextBox.Text.Length != 0 && JuegoIdComboBox.Text.Length != 0)
+            if (int.Parse(CantidadJuegosTextBox.Text) < 1)
+            {
+                CantidadJuegosTextBox.Text = "1";
+                MessageBox.Show("La cantidad minima es 1", "Error de cantidad", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+            if (AmigoComboBox.Text.Length != 0 && CantidadJuegosTextBox.Text.Length != 0 && ObsevacionTextBox.Text.Length != 0 && JuegoIdComboBox.Text.Length != 0)
             {
                 var remover = JuegosBLL.Buscar(JuegoIdComboBox.SelectedIndex + 1);
-                remover.Existencias -= int.Parse(CantidadJuegosTextBox.Text);
+                JuegosBLL.Salida(remover, int.Parse(CantidadJuegosTextBox.Text));
                 if(remover.Existencias >= 0)
                 {
                     JuegosBLL.Guardar(remover);

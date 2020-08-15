@@ -55,14 +55,13 @@ namespace TPAplicada1.UI.Registros
 
             var ingreso = JuegosBLL.Buscar(JuegoIdComboBox.SelectedIndex + 1);
 
-            if (int.Parse(CantidadTextBox.Text) < 0)
+            if (int.Parse(CantidadTextBox.Text) < 1)
             {
                 CantidadTextBox.Text = "1";
                 MessageBox.Show("La cantidad minima es 1", "Error de cantidad", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
-            ingreso.Existencias += int.Parse(CantidadTextBox.Text);
-            JuegosBLL.Guardar(ingreso);
+            JuegosBLL.Entrada(ingreso, int.Parse(CantidadTextBox.Text));
             var proceso = EntradasBLL.Guardar(Entrada);
 
             if (proceso == true)
@@ -79,6 +78,8 @@ namespace TPAplicada1.UI.Registros
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
+            var ingreso = JuegosBLL.Buscar(JuegoIdComboBox.SelectedIndex + 1);
+            JuegosBLL.Salida(ingreso, int.Parse(CantidadTextBox.Text));
             if (EntradasBLL.Eliminar(int.Parse(EntradaIdTextBox.Text)))
             {
                 Refrescar();
